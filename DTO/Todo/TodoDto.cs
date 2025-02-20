@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Web_API.DTO.Stock
+namespace Web_API.DTO.Todo
 {
     public class TodoDto
     {

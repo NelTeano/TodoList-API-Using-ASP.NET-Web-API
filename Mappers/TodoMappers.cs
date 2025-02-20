@@ -3,34 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Web_API.Models;
-using Web_API.DTO.Stock;
+using Web_API.DTO.Todo;
 
 namespace Web_API.Mappers
 {
     public static class TodoMappers
     {
-        public static TodoDto ToTodoDto(this Todo Todo)
+        public static Todo ToTodoDto(this Todo TodoModel)
         {
-            return new TodoDto
+            return new Todo
             {
-                Title = Todo.Title,
-                Description = Todo.Description,
-                IsComplete = Todo.IsComplete,
-                CreatedOn = Todo.CreatedOn,
-                UpdatedOn = Todo.UpdatedOn
+                Id = TodoModel.Id,
+                Title = TodoModel.Title,
+                Description = TodoModel.Description,
+                IsComplete = TodoModel.IsComplete,
+                CreatedOn = TodoModel.CreatedOn,
+                UpdatedOn = TodoModel.UpdatedOn
             };
         }
 
 
-        public static Todo TodoRequestToTodo(this CreateTodoRequestDto TodoDto)
+        public static Todo CreateTodoRequestToTodo(this CreateTodoRequestDto TodoModel)
         {
             return new Todo
             {
-                Title = TodoDto.Title,
-                Description = TodoDto.Description,
-                // IsComplete = TodoDto.IsComplete,
-                // CreatedOn = TodoDto.CreatedOn,
-                // UpdatedOn = TodoDto.UpdatedOn
+                Title = TodoModel.Title,
+                Description = TodoModel.Description,
             };
         }
 
@@ -53,6 +51,8 @@ namespace Web_API.Mappers
                 UpdatedOn = TodoModel.UpdatedOn
             };
         }
+
+
 
 
     }

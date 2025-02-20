@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Web_API.Data;
-using Web_API.DTO.Stock;
+using Web_API.DTO.Todo;
 using Web_API.Mappers;
+using Web_API.Models;
 
 namespace Web_API.Controllers
 {
@@ -45,7 +46,7 @@ namespace Web_API.Controllers
                 return BadRequest(ModelState);
 
 
-            var todoModel = TodoDto.TodoRequestToTodo();
+            var todoModel = TodoDto.CreateTodoRequestToTodo();
             _context.Todos.Add(todoModel);
             _context.SaveChanges();
 
@@ -92,6 +93,21 @@ namespace Web_API.Controllers
             _context.SaveChanges();
 
             return Ok(todoModel.UpdateTodoRequestToTodo());
+        }
+
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteTodoById([FromRoute] int id) {
+            var todo = _context.Todos.Find(id);
+
+            if(todo == null) {
+                return NotFound();
+            }
+
+            _context.Todos.Remove(todo);
+            _context.SaveChanges();
+
+            return Ok(todo.ToTodoDto());
         }
         
     }

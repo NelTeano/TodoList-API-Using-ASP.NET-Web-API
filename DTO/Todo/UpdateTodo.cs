@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Web_API.DTO.Stock
+namespace Web_API.DTO.Todo
 {
     public class MarkCompleteTodo
     {
@@ -23,4 +23,10 @@ namespace Web_API.DTO.Stock
         public DateTime? UpdatedOn { get; set; } =  DateTime.Now; 
 
     }   
+
+    public class DeleteTodoByIdRequestDto
+    {
+        [Required]
+        public int Id { get; set; }
+    }
 }
